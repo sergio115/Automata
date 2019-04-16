@@ -42,15 +42,13 @@ namespace Automata
 
         public void EstadoInicial() {
             contador = 0;
-            fila = dataGridView1.Rows.Add();
+            //fila = dataGridView1.Rows.Add();
             for (int i = 0; i < letrasMinnusculas.Length; i++) {
                 if ((contador < textBox1.Text.Length) && 
                         (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i])) {
                     Estado1();
                 } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ' ')) {
-                    contador++;
                     Estado110();
-                    dataGridView1.Rows.Add();
                 }
 
                 lexema = null;
@@ -84,6 +82,7 @@ namespace Automata
                     }
                 }
             }
+            
         }
         #endregion
 
@@ -399,15 +398,19 @@ namespace Automata
 
         #region Estados de Aceptación
         public void Estado100() {
+            fila = dataGridView1.Rows.Add();
             aprobado = true;
+            granema = "IDENTIFICADOR";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
             return;
         }
-        public void Estado110()
-        {
+        public void Estado110() {
+            contador++;
+            fila = dataGridView1.Rows.Add();
             aprobado = true;
             lexema = "' '";
-            granema = "Espacio";
+            granema = "ESPACIO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
             return;
