@@ -51,7 +51,7 @@ namespace Automata
                     Estado110();
                 }
 
-                lexema = null;
+                //lexema = null;
             }
         }
 
@@ -65,24 +65,44 @@ namespace Automata
                     Estado1();
                 }
             }
+            //for (int i = 0; i < letrasMinnusculas.Length; i++) {
+            //    if (contador < textBox1.Text.Length) {
+            //        if (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i]) {
+            //            lexema += charsRead[contador].ToString();
+            //            contador++;
+            //            Estado1();
+            //        } else if (charsRead[contador] == '_') {
+            //            lexema += charsRead[contador].ToString();
+            //            contador++;
+            //            Estado2();
+            //        } else {
+            //            lexema += charsRead[contador].ToString();
+            //            contador++;
+            //            Estado100();
+            //        }
+            //    }
+            //}
             for (int i = 0; i < letrasMinnusculas.Length; i++) {
-                if (contador < textBox1.Text.Length) {
+                if (contador < textBox1.Text.Length) { 
                     if (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i]) {
                         lexema += charsRead[contador].ToString();
                         contador++;
                         Estado1();
-                    } else if (charsRead[contador] == '_') {
-                        lexema += charsRead[contador].ToString();
-                        contador++;
-                        Estado2();
-                    } else {
-                        lexema += charsRead[contador].ToString();
-                        contador++;
-                        Estado100();
                     }
                 }
             }
-            
+            if (contador < textBox1.Text.Length) { 
+                if (charsRead[contador] == '_') {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado2();
+                } else {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado100();
+                }
+            }
+
         }
         #endregion
 
