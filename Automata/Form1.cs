@@ -46,12 +46,14 @@ namespace Automata
             for (int i = 0; i < letrasMinnusculas.Length; i++) {
                 if ((contador < textBox1.Text.Length) && 
                         (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i])) {
-                    Estado1();
+                    //contador++;
+                    Estado1();    
                 } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ' ')) {
+                    contador++;
                     Estado110();
                 }
 
-                //lexema = null;
+                lexema = null;  // Permite mostrar la palabra bien
             }
         }
 
@@ -102,7 +104,6 @@ namespace Automata
                     Estado100();
                 }
             }
-
         }
         #endregion
 
@@ -421,12 +422,12 @@ namespace Automata
             fila = dataGridView1.Rows.Add();
             aprobado = true;
             granema = "IDENTIFICADOR";
-            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length-1);
             dataGridView1.Rows[fila].Cells[3].Value = granema;
+            lexema = null;  // Limpia el buffer
             return;
         }
         public void Estado110() {
-            contador++;
             fila = dataGridView1.Rows.Add();
             aprobado = true;
             lexema = "' '";
@@ -445,8 +446,12 @@ namespace Automata
         }
 
         public void Estado501() {
+            fila = dataGridView1.Rows.Add();
             aprobado = false;
+            granema = "ERROR 501";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+            //lexema = null;
             return;
         }
         #endregion
