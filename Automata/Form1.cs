@@ -43,18 +43,24 @@ namespace Automata
         public void EstadoInicial() {
             contador = 0;
             //fila = dataGridView1.Rows.Add();
-            for (int i = 0; i < letrasMinnusculas.Length; i++) {
-                if ((contador < textBox1.Text.Length) && 
-                        (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i])) {
-                    //contador++;
-                    Estado1();    
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ' ')) {
+            while (contador < textBox1.Text.Length) {
+                for (int i = 0; i < letrasMinnusculas.Length; i++) {
+                    if ((contador < textBox1.Text.Length) && 
+                            (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i])) {
+                        //contador++;
+                        Estado1();
+                        lexema = null;  // Permite mostrar la palabra bien
+                        break;
+                    }
+                }
+                if ((contador < textBox1.Text.Length) && (charsRead[contador] == ' '))
+                {
                     contador++;
                     Estado110();
+                    lexema = null;  // Permite mostrar la palabra bien
                 }
-
-                lexema = null;  // Permite mostrar la palabra bien
             }
+           
         }
 
         #region Estados de Transición
