@@ -27,7 +27,6 @@ namespace Automata
         public Form1()
         {
             InitializeComponent();
-
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
@@ -42,30 +41,59 @@ namespace Automata
 
         public void EstadoInicial() {
             contador = 0;
-            //fila = dataGridView1.Rows.Add();
             while (contador < textBox1.Text.Length) {
                 for (int i = 0; i < letrasMinnusculas.Length; i++) {
-                    if ((contador < textBox1.Text.Length) && 
-                            (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i])) {
-                        //contador++;
+                    if (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i]) {
+                        lexema += charsRead[contador].ToString();
+                        contador++;
                         Estado1();
                         lexema = null;  // Permite mostrar la palabra bien
                         break;
                     }
                 }
-                if ((contador < textBox1.Text.Length) && (charsRead[contador] == ' '))
-                {
+                if ((contador < textBox1.Text.Length) && (charsRead[contador] == ' ')) {
                     contador++;
                     Estado110();
                     lexema = null;  // Permite mostrar la palabra bien
+                } else {
+                    contador++;
                 }
             }
-           
         }
 
         #region Estados de Transición
         #region Identificadores
         public void Estado1() {
+            if (contador < textBox1.Text.Length) {
+                for (int i = 0; i < numeros.Length; i++) {
+                    if (charsRead[contador] == numeros[i]) {
+                        lexema += charsRead[contador].ToString();
+                        contador++;
+                        Estado1();
+                        return;
+                    }
+                }
+                for (int i = 0; i < letrasMinnusculas.Length; i++) {
+                    if (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i]) {
+                        lexema += charsRead[contador].ToString();
+                        contador++;
+                        Estado1();
+                        return;
+                    }
+                }
+                if (charsRead[contador] == '_') {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado2();
+                } else {
+                    lexema += charsRead[contador].ToString();
+                    //contador++;
+                    Estado100();
+                }
+            }
+        }
+
+        public void Estado2() {
             for (int i = 0; i < numeros.Length; i++) {
                 if ((contador < textBox1.Text.Length) && (charsRead[contador] == numeros[i])) {
                     lexema += charsRead[contador].ToString();
@@ -73,25 +101,8 @@ namespace Automata
                     Estado1();
                 }
             }
-            //for (int i = 0; i < letrasMinnusculas.Length; i++) {
-            //    if (contador < textBox1.Text.Length) {
-            //        if (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i]) {
-            //            lexema += charsRead[contador].ToString();
-            //            contador++;
-            //            Estado1();
-            //        } else if (charsRead[contador] == '_') {
-            //            lexema += charsRead[contador].ToString();
-            //            contador++;
-            //            Estado2();
-            //        } else {
-            //            lexema += charsRead[contador].ToString();
-            //            contador++;
-            //            Estado100();
-            //        }
-            //    }
-            //}
             for (int i = 0; i < letrasMinnusculas.Length; i++) {
-                if (contador < textBox1.Text.Length) { 
+                if (contador < textBox1.Text.Length) {
                     if (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i]) {
                         lexema += charsRead[contador].ToString();
                         contador++;
@@ -99,45 +110,15 @@ namespace Automata
                     }
                 }
             }
-            if (contador < textBox1.Text.Length) { 
-                if (charsRead[contador] == '_') {
-                    lexema += charsRead[contador].ToString();
-                    contador++;
-                    Estado2();
-                } else {
-                    lexema += charsRead[contador].ToString();
-                    contador++;
-                    Estado100();
-                }
+            if (contador < textBox1.Text.Length) {
+                lexema += charsRead[contador].ToString();
+                contador++;
+                Estado501();
             }
         }
         #endregion
 
-        public void Estado2() {
-            for (int i = 0; i < numeros.Length; i++) {
-                    if ((contador < textBox1.Text.Length) && (charsRead[contador] == numeros[i])) {
-                        lexema += charsRead[contador].ToString();
-                        contador++;
-                        Estado1();
-                    }
-                }
-            for (int i = 0; i < letrasMinnusculas.Length; i++) {
-                if (contador < textBox1.Text.Length) {
-                    if ((contador < textBox1.Text.Length) &&
-                            (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i])) {
-                        lexema += charsRead[contador].ToString();
-                        contador++;
-                        Estado1();
-                    } else {
-                        lexema += charsRead[contador].ToString();
-                        contador++;
-                        Estado501();
-                    }
-                }     
-            }
-        }
-
-        #region Estados no funcionales
+        #region Estados que aún no funcionan
         public void Estado3()
         {
             if (contador < textBox1.Text.Length)
@@ -457,7 +438,7 @@ namespace Automata
             granema = "ERROR 501";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            //lexema = null;
+            lexema = null;
             return;
         }
         #endregion
