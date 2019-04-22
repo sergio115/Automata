@@ -62,13 +62,20 @@ namespace Automata
                         }
                     }
                 }
+                if ((contador < textBox1.Text.Length) && (charsRead[contador] == '"')) {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado6();
+                    lexema = null;
+                }
                 if ((contador < textBox1.Text.Length) && (charsRead[contador] == ' ')) {
                     contador++;
                     Estado110();
                     lexema = null;  // Permite mostrar la palabra bien
-                } //else {
-                //    contador++;
-                //}
+                } else {
+                    // Hay que modificarlo para que funcione y detecte por ejemplo identificadores despues de numeros
+                    contador++;
+                }
             }
         }
 
@@ -153,272 +160,114 @@ namespace Automata
             }
         }
 
-        public void Estado4()
-        {
-            aprobado = true;
+        public void Estado4() {
+            if (contador < textBox1.Text.Length) {
+                for (int i = 0; i < numeros.Length; i++) {
+                    if (charsRead[contador] == numeros[i]) {
+                        lexema += charsRead[contador].ToString();
+                        contador++;
+                        Estado5();
+                        return;
+                    }
+                }
 
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
+                lexema += charsRead[contador].ToString();
+                Estado500();
             }
         }
 
-        public void Estado5()
-        {
-            aprobado = true;
+        public void Estado5() {
+            for (int i = 0; i < numeros.Length; i++) {
+                if ((contador < textBox1.Text.Length) && (charsRead[contador] == numeros[i])) {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado5();
+                    return;
+                }
+            }
+            if (contador < textBox1.Text.Length) {
+                lexema += charsRead[contador].ToString();
+                //contador++;
+                Estado102();
+            }
+        }
+        #endregion
 
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
+        #region Letreros
+        public void Estado6() {
+            if ((contador < textBox1.Text.Length) && (charsRead[contador] == '"')) {
+                lexema += charsRead[contador].ToString();
+                contador++;
+                Estado7();
+            } else if (contador < textBox1.Text.Length) {
+                lexema += charsRead[contador].ToString();
+                contador++;
+                Estado6();
+            }
+        }
+
+        public void Estado7() {
+            if ((contador < textBox1.Text.Length) && (charsRead[contador] == '"')) {
+                lexema += charsRead[contador].ToString();
+                contador++;
+                Estado6();
+                return;
+            } else if (contador < textBox1.Text.Length) {
+                lexema += charsRead[contador].ToString();
+                Estado103();
             }
         }
         #endregion
 
         #region Estados que aún no funcionan
-        public void Estado6()
-        {
-            aprobado = true;
-
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
-        }
-
-        public void Estado7()
-        {
-            aprobado = true;
-
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
-        }
-
         public void Estado8()
         {
-            aprobado = true;
-
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
+            
         }
 
         public void Estado9()
         {
-            aprobado = true;
-
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
+            
         }
 
         public void Estado10()
         {
-            aprobado = true;
-
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
+            
         }
 
         public void Estado11()
         {
-            aprobado = true;
-
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
+            
         }
 
         public void Estado12()
         {
-            aprobado = true;
-
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
+            
         }
 
         public void Estado13()
         {
-            aprobado = true;
-
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
+            
         }
 
         public void Estado14()
         {
-            aprobado = true;
 
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
         }
 
         public void Estado15()
         {
-            aprobado = true;
-
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
+            
         }
 
         public void Estado16()
         {
-            aprobado = true;
-
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
+         
         }
 
         public void Estado17()
         {
-            aprobado = true;
-
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado4();
-                }
-                else if (charsRead[contador] == 'b')
-                {
-                    contador++;
-                    EstadoError();
-                }
-            }
+            
         }
         #endregion
         #endregion
@@ -443,6 +292,22 @@ namespace Automata
             lexema = null;
         }
 
+        public void Estado102() {
+            fila = dataGridView1.Rows.Add();
+            granema = "NÚMERO REAL";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length - 1);
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+            lexema = null;
+        }
+
+        public void Estado103() {
+            fila = dataGridView1.Rows.Add();
+            granema = "LETRERO";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length - 1);
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+            lexema = null;
+        }
+
         public void Estado110() {
             fila = dataGridView1.Rows.Add();
             aprobado = true;
@@ -455,10 +320,12 @@ namespace Automata
         #endregion
 
         #region Estados de Error
-        public void EstadoError()
-        {
-            aprobado = false;
-            //return;
+        public void Estado500() {
+            fila = dataGridView1.Rows.Add();
+            granema = "ERROR 500";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+            lexema = null;
         }
 
         public void Estado501() {
