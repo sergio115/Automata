@@ -51,13 +51,24 @@ namespace Automata
                         break;
                     }
                 }
+                if (contador < textBox1.Text.Length) {
+                    for (int i = 0; i < numeros.Length; i++) {
+                        if (charsRead[contador] == numeros[i]) {
+                            lexema += charsRead[contador].ToString();
+                            contador++;
+                            Estado3();
+                            lexema = null;
+                            break;
+                        }
+                    }
+                }
                 if ((contador < textBox1.Text.Length) && (charsRead[contador] == ' ')) {
                     contador++;
                     Estado110();
                     lexema = null;  // Permite mostrar la palabra bien
-                } else {
-                    contador++;
-                }
+                } //else {
+                //    contador++;
+                //}
             }
         }
 
@@ -99,6 +110,7 @@ namespace Automata
                     lexema += charsRead[contador].ToString();
                     contador++;
                     Estado1();
+                    return;
                 }
             }
             for (int i = 0; i < letrasMinnusculas.Length; i++) {
@@ -107,31 +119,36 @@ namespace Automata
                         lexema += charsRead[contador].ToString();
                         contador++;
                         Estado1();
+                        return;
                     }
                 }
             }
             if (contador < textBox1.Text.Length) {
                 lexema += charsRead[contador].ToString();
-                contador++;
+                //contador++;
                 Estado501();
             }
         }
         #endregion
 
-        #region Estados que aún no funcionan
-        public void Estado3()
-        {
-            if (contador < textBox1.Text.Length)
-            {
-                if (charsRead[contador] == 'a')
-                {
-                    contador++;
-                    Estado3();
+        #region Números
+        public void Estado3() {
+            if (contador < textBox1.Text.Length) {
+                for (int i = 0; i < numeros.Length; i++) {
+                    if (charsRead[contador] == numeros[i]) {
+                        lexema += charsRead[contador].ToString();
+                        contador++;
+                        Estado3();
+                        return;
+                    }
                 }
-                else if (charsRead[contador] == 'b')
-                {
+                if (charsRead[contador] == '.') {
+                    lexema += charsRead[contador].ToString();
                     contador++;
                     Estado4();
+                } else {
+                    lexema += charsRead[contador].ToString();
+                    Estado101();
                 }
             }
         }
@@ -173,7 +190,9 @@ namespace Automata
                 }
             }
         }
+        #endregion
 
+        #region Estados que aún no funcionan
         public void Estado6()
         {
             aprobado = true;
@@ -412,8 +431,18 @@ namespace Automata
             dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length-1);
             dataGridView1.Rows[fila].Cells[3].Value = granema;
             lexema = null;  // Limpia el buffer
-            return;
+            //return;
         }
+
+        public void Estado101() {
+            fila = dataGridView1.Rows.Add();
+            aprobado = true;
+            granema = "NÚMERO ENTERO";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length - 1);
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+            lexema = null;
+        }
+
         public void Estado110() {
             fila = dataGridView1.Rows.Add();
             aprobado = true;
@@ -421,7 +450,7 @@ namespace Automata
             granema = "ESPACIO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            return;
+            //return;
         }
         #endregion
 
@@ -429,7 +458,7 @@ namespace Automata
         public void EstadoError()
         {
             aprobado = false;
-            return;
+            //return;
         }
 
         public void Estado501() {
@@ -439,7 +468,7 @@ namespace Automata
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
             lexema = null;
-            return;
+            //return;
         }
         #endregion
     }
