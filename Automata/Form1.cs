@@ -30,7 +30,6 @@ namespace Automata
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
         {
-            charsRead = new char[textBox1.Text.Length];
             charsRead = textBox1.Text.ToCharArray();
             dataGridView1.Rows.Clear();
 
