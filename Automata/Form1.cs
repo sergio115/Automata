@@ -14,7 +14,6 @@ namespace Automata
     {
         int contador;
         char[] charsRead;
-        bool aprobado;
         int fila;
         string lexema;
         string granema;
@@ -36,7 +35,6 @@ namespace Automata
             dataGridView1.Rows.Clear();
 
             EstadoInicial();
-            label1.Text = "El estado es: " + aprobado.ToString();
         }
 
         public void EstadoInicial() {
@@ -119,6 +117,54 @@ namespace Automata
                     Estado15();
                     lexema = null;
                     goto Estado0;
+                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '(')) {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado117();
+                    lexema = null;
+                    goto Estado0;
+                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ')')) {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado118();
+                    lexema = null;
+                    goto Estado0;
+                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '[')) {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado119();
+                    lexema = null;
+                    goto Estado0;
+                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ']')) {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado120();
+                    lexema = null;
+                    goto Estado0;
+                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ',')) {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado121();
+                    lexema = null;
+                    goto Estado0;
+                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '.')) {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado16();
+                    lexema = null;
+                    goto Estado0;
+                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ';')) {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado124();
+                    lexema = null;
+                    goto Estado0;
+                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ':')) {
+                    lexema += charsRead[contador].ToString();
+                    contador++;
+                    Estado17();
+                    lexema = null;
+                    goto Estado0;
                 }
 
                 else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ' ')) {
@@ -126,8 +172,11 @@ namespace Automata
                     Estado127();
                     lexema = null;
                     goto Estado0;
-                } else {
+                } else if (contador < textBox1.Text.Length) {
+                    lexema += charsRead[contador].ToString();
                     contador++;
+                    Estado506();
+                    Lexema = null;
                 }
             }
         }
@@ -373,15 +422,27 @@ namespace Automata
         }
         #endregion
 
-        #region Estados que aún no funcionan
-        public void Estado16()
-        {
-         
+        #region Delimitadores
+        public void Estado16() {
+            if ((contador < textBox1.Text.Length) && (charsRead[contador] == '.')) {
+                lexema += charsRead[contador].ToString();
+                Estado123();
+                contador++;
+                return;
+            } else if (contador < textBox1.Text.Length) {
+                Estado122();
+            }
         }
 
-        public void Estado17()
-        {
-            
+        public void Estado17() {
+            if ((contador < textBox1.Text.Length) && (charsRead[contador] == '=')) {
+                lexema += charsRead[contador].ToString();
+                Estado126();
+                contador++;
+                return;
+            }else if (contador < textBox1.Text.Length) {
+                Estado125();
+            }
         }
         #endregion
         #endregion
@@ -389,7 +450,6 @@ namespace Automata
         #region Estados de Aceptación
         public void Estado100() {
             fila = dataGridView1.Rows.Add();
-            aprobado = true;
             granema = "IDENTIFICADOR";
             dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length-1);
             dataGridView1.Rows[fila].Cells[3].Value = granema;
@@ -399,7 +459,6 @@ namespace Automata
 
         public void Estado101() {
             fila = dataGridView1.Rows.Add();
-            aprobado = true;
             granema = "NÚMERO ENTERO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length - 1);
             dataGridView1.Rows[fila].Cells[3].Value = granema;
@@ -524,9 +583,82 @@ namespace Automata
             lexema = null;
         }
 
+        public void Estado117() {
+            fila = dataGridView1.Rows.Add();
+            granema = "PARENTÉSIS QUE ABRE";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+        }
+
+        public void Estado118() {
+            fila = dataGridView1.Rows.Add();
+            granema = "PARENTÉSIS QUE CIERRA";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+        }
+
+        public void Estado119() {
+            fila = dataGridView1.Rows.Add();
+            granema = "CORCHETE QUE ABRE";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+        }
+
+        public void Estado120() {
+            fila = dataGridView1.Rows.Add();
+            granema = "CORCHETE QUE CIERRA";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+        }
+
+        public void Estado121() {
+            fila = dataGridView1.Rows.Add();
+            granema = "COMA";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+        }
+
+        public void Estado122() {
+            fila = dataGridView1.Rows.Add();
+            granema = "PUNTO";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+            lexema = null;
+        }
+
+        public void Estado123() {
+            fila = dataGridView1.Rows.Add();
+            granema = "PUNTO PUNTO";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+            lexema = null;
+        }
+
+        public void Estado124() {
+            fila = dataGridView1.Rows.Add();
+            granema = "PUNTO Y COMA";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+        }
+
+        public void Estado125() {
+            fila = dataGridView1.Rows.Add();
+            granema = "DOS PUNTOS";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+            lexema = null;
+        }
+
+        public void Estado126() {
+            fila = dataGridView1.Rows.Add();
+            granema = "ASIGNACIÓN";
+            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[3].Value = granema;
+            lexema = null;
+        }
+
         public void Estado127() {
             fila = dataGridView1.Rows.Add();
-            aprobado = true;
             lexema = "' '";
             granema = "ESPACIO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
@@ -546,7 +678,6 @@ namespace Automata
 
         public void Estado501() {
             fila = dataGridView1.Rows.Add();
-            aprobado = false;
             granema = "ERROR 501";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
@@ -556,7 +687,6 @@ namespace Automata
 
         public void Estado502() {
             fila = dataGridView1.Rows.Add();
-            aprobado = false;
             granema = "ERROR 502";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
@@ -565,7 +695,6 @@ namespace Automata
 
         public void Estado503() {
             fila = dataGridView1.Rows.Add();
-            aprobado = false;
             granema = "ERROR 503";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
@@ -574,7 +703,7 @@ namespace Automata
 
         public void Estado506() {
             fila = dataGridView1.Rows.Add();
-            granema = "ERROR 506";
+            granema = "506: ERROR LÉXICO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
             lexema = null;
