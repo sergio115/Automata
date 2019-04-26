@@ -175,7 +175,7 @@ namespace Automata
                     lexema += charsRead[contador].ToString();
                     contador++;
                     Estado506();
-                    Lexema = null;
+                    lexema = null;
                 }
             }
         }
@@ -449,263 +449,236 @@ namespace Automata
         #region Estados de Aceptación
         public void Estado100() {
             fila = dataGridView1.Rows.Add();
-            granema = "IDENTIFICADOR";
+            granema = "100: IDENTIFICADOR";
             dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length-1);
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;  // Limpia el buffer
-            //return;
         }
 
         public void Estado101() {
             fila = dataGridView1.Rows.Add();
-            granema = "NÚMERO ENTERO";
+            granema = "101: NÚMERO ENTERO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length - 1);
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado102() {
             fila = dataGridView1.Rows.Add();
-            granema = "NÚMERO REAL";
+            granema = "102: NÚMERO REAL";
             dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length - 1);
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado103() {
             fila = dataGridView1.Rows.Add();
-            granema = "LETRERO";
+            granema = "103: LETRERO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length - 1);
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado104() {
             fila = dataGridView1.Rows.Add();
-            granema = "COMENTARIO";
+            granema = "104: COMENTARIO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado105() {
             fila = dataGridView1.Rows.Add();
-            granema = "COMENTARIO";
+            granema = "105: COMENTARIO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado106() {
             fila = dataGridView1.Rows.Add();
-            granema = "IGUALDAD";
+            granema = "106: IGUALDAD";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado107() {
             fila = dataGridView1.Rows.Add();
-            granema = "MENOR";
+            granema = "107: MENOR";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado108() {
             fila = dataGridView1.Rows.Add();
-            granema = "DIFERENTE";
+            granema = "108: DIFERENTE";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado109() {
             fila = dataGridView1.Rows.Add();
-            granema = "MENOR IGUAL";
+            granema = "109: MENOR IGUAL";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado110() {
             fila = dataGridView1.Rows.Add();
-            granema = "MAYOR";
+            granema = "110: MAYOR";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado111() {
             fila = dataGridView1.Rows.Add();
-            granema = "MAYOR IGUAL";
+            granema = "111: MAYOR IGUAL";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado112() {
             fila = dataGridView1.Rows.Add();
-            granema = "SUMA";
+            granema = "112: SUMA";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
         }
 
         public void Estado113() {
             fila = dataGridView1.Rows.Add();
-            granema = "RESTA";
+            granema = "113: RESTA";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
         }
 
         public void Estado114() {
             fila = dataGridView1.Rows.Add();
-            granema = "MULTIPLICACIÓN";
+            granema = "114: MULTIPLICACIÓN";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado115() {
             fila = dataGridView1.Rows.Add();
-            granema = "POR POR";
+            granema = "115: POR POR";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado116() {
             fila = dataGridView1.Rows.Add();
-            granema = "DIVISIÓN";
+            granema = "116: DIVISIÓN";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado117() {
             fila = dataGridView1.Rows.Add();
-            granema = "PARENTÉSIS QUE ABRE";
+            granema = "117: PARENTÉSIS QUE ABRE";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
         }
 
         public void Estado118() {
             fila = dataGridView1.Rows.Add();
-            granema = "PARENTÉSIS QUE CIERRA";
+            granema = "118: PARENTÉSIS QUE CIERRA";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
         }
 
         public void Estado119() {
             fila = dataGridView1.Rows.Add();
-            granema = "CORCHETE QUE ABRE";
+            granema = "119: CORCHETE QUE ABRE";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
         }
 
         public void Estado120() {
             fila = dataGridView1.Rows.Add();
-            granema = "CORCHETE QUE CIERRA";
+            granema = "120: CORCHETE QUE CIERRA";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
         }
 
         public void Estado121() {
             fila = dataGridView1.Rows.Add();
-            granema = "COMA";
+            granema = "121: COMA";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
         }
 
         public void Estado122() {
             fila = dataGridView1.Rows.Add();
-            granema = "PUNTO";
+            granema = "122: PUNTO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado123() {
             fila = dataGridView1.Rows.Add();
-            granema = "PUNTO PUNTO";
+            granema = "123: PUNTO PUNTO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado124() {
             fila = dataGridView1.Rows.Add();
-            granema = "PUNTO Y COMA";
+            granema = "124: PUNTO Y COMA";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
         }
 
         public void Estado125() {
             fila = dataGridView1.Rows.Add();
-            granema = "DOS PUNTOS";
+            granema = "125: DOS PUNTOS";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado126() {
             fila = dataGridView1.Rows.Add();
-            granema = "ASIGNACIÓN";
+            granema = "126: ASIGNACIÓN";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado127() {
             fila = dataGridView1.Rows.Add();
             lexema = "' '";
-            granema = "ESPACIO";
+            granema = "127: ESPACIO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            //return;
         }
         #endregion
 
         #region Estados de Error
         public void Estado500() {
             fila = dataGridView1.Rows.Add();
-            granema = "ERROR 500";
+            granema = "ERROR 500: REAL MAL FORMADO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado501() {
             fila = dataGridView1.Rows.Add();
-            granema = "ERROR 501";
+            granema = "ERROR 501: IDENTIFICADOR MAL FORMADO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
-            //return;
         }
 
         public void Estado502() {
             fila = dataGridView1.Rows.Add();
-            granema = "ERROR 502";
+            granema = "ERROR 502: COMENTARIO MAL FORMADO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado503() {
             fila = dataGridView1.Rows.Add();
-            granema = "ERROR 503";
+            granema = "ERROR 503: OPERADOR MAL FORMADO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
 
         public void Estado506() {
             fila = dataGridView1.Rows.Add();
-            granema = "506: ERROR LÉXICO";
+            granema = "ERROR 506: ERROR LÉXICO";
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
-            lexema = null;
         }
         #endregion
     }

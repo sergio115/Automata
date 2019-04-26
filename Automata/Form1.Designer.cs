@@ -57,35 +57,47 @@
             this.Columna,
             this.Lexema,
             this.Granema});
-            this.dataGridView1.Location = new System.Drawing.Point(563, 44);
+            this.dataGridView1.Location = new System.Drawing.Point(563, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(444, 394);
+            this.dataGridView1.Size = new System.Drawing.Size(444, 426);
             this.dataGridView1.TabIndex = 3;
             // 
             // Fila
             // 
+            this.Fila.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Fila.HeaderText = "Fila";
+            this.Fila.MinimumWidth = 50;
             this.Fila.Name = "Fila";
             this.Fila.ReadOnly = true;
+            this.Fila.Width = 50;
             // 
             // Columna
             // 
+            this.Columna.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Columna.HeaderText = "Columna";
+            this.Columna.MinimumWidth = 50;
             this.Columna.Name = "Columna";
             this.Columna.ReadOnly = true;
+            this.Columna.Width = 73;
             // 
             // Lexema
             // 
+            this.Lexema.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Lexema.HeaderText = "Lexema";
+            this.Lexema.MinimumWidth = 150;
             this.Lexema.Name = "Lexema";
             this.Lexema.ReadOnly = true;
+            this.Lexema.Width = 150;
             // 
             // Granema
             // 
+            this.Granema.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Granema.HeaderText = "Granema";
+            this.Granema.MinimumWidth = 150;
             this.Granema.Name = "Granema";
             this.Granema.ReadOnly = true;
+            this.Granema.Width = 150;
             // 
             // Form1
             // 
@@ -94,6 +106,8 @@
             this.ClientSize = new System.Drawing.Size(1012, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
