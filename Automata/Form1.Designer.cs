@@ -71,6 +71,7 @@
             this.Fila.Name = "Fila";
             this.Fila.ReadOnly = true;
             this.Fila.Width = 50;
+            this.Fila.Visible = false;
             // 
             // Columna
             // 
@@ -80,6 +81,7 @@
             this.Columna.Name = "Columna";
             this.Columna.ReadOnly = true;
             this.Columna.Width = 73;
+            this.Columna.Visible = false;
             // 
             // Lexema
             // 

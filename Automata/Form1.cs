@@ -22,6 +22,10 @@ namespace Automata
         char[] letrasMayusculas = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ',
                                     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Á', 'É', 'Í', 'Ó', 'Ú' };
         char[] numeros = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        String[] palabrasReservadas = { "Array", "Begin", "Case", "Const", "Do", "Else", "Writeln", "Readln", "ElseIf", "End",
+                                        "For", "If", "Loop", "Module", "Function", "Exit", "Not", "Of", "Mod", "Record",
+                                        "Repeat", "Return", "Pocedure", "By", "Then", "To", "Until", "Var", "While", "With",
+                                        "True", "False", "Div", "Integer", "Real", "Char", "String", "Byte", "Boolean", "String" };
 
         public Form1()
         {
@@ -43,136 +47,134 @@ namespace Automata
             while (contador < textBox1.Text.Length) {
                 for (int i = 0; i < letrasMinnusculas.Length; i++) {
                     if (charsRead[contador] == letrasMinnusculas[i] || charsRead[contador] == letrasMayusculas[i]) {
-                        lexema += charsRead[contador].ToString();
+                        lexema = charsRead[contador].ToString();
                         contador++;
                         Estado1();
-                        lexema = null;  // Permite mostrar la palabra bien
-                        break;
+                        lexema = null;  // Limpia la variable para nuevas entradas
+                        goto Estado0;
                     }
                 }
-                if (contador < textBox1.Text.Length) {
-                    for (int i = 0; i < numeros.Length; i++) {
-                        if (charsRead[contador] == numeros[i]) {
-                            lexema += charsRead[contador].ToString();
-                            contador++;
-                            Estado3();
-                            lexema = null;
-                            //break;
-                            goto Estado0;
-                        }
+                for (int i = 0; i < numeros.Length; i++) {
+                    if (charsRead[contador] == numeros[i]) {
+                        lexema = charsRead[contador].ToString();
+                        contador++;
+                        Estado3();
+                        lexema = null;
+                        goto Estado0;
                     }
                 }
-                if ((contador < textBox1.Text.Length) && (charsRead[contador] == '"')) {
-                    lexema += charsRead[contador].ToString();
+                if (charsRead[contador] == '"') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado6();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '/')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == '/') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado8();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '{')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == '{') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado11();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '=')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == '=') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado12();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '<')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == '<') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado13();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '>')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == '>') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado14();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '+')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == '+') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado112();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '-')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == '-') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado113();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '*')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == '*') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado15();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '(')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == '(') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado117();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ')')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == ')') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado118();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '[')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == '[') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado119();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ']')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == ']') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado120();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ',')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == ',') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado121();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == '.')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == '.') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado16();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ';')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == ';') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado124();
                     lexema = null;
                     goto Estado0;
-                } else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ':')) {
-                    lexema += charsRead[contador].ToString();
+                } else if (charsRead[contador] == ':') {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado17();
                     lexema = null;
                     goto Estado0;
                 }
 
-                else if ((contador < textBox1.Text.Length) && (charsRead[contador] == ' ')) {
+                // Espacio para agregar la deteccion de tabular, new line y backspace
+                else if (charsRead[contador] == ' ') {
                     contador++;
                     Estado127();
                     lexema = null;
                     goto Estado0;
-                } else if (contador < textBox1.Text.Length) {
-                    lexema += charsRead[contador].ToString();
+                } else  {
+                    lexema = charsRead[contador].ToString();
                     contador++;
                     Estado506();
                     lexema = null;
@@ -450,6 +452,13 @@ namespace Automata
         public void Estado100() {
             fila = dataGridView1.Rows.Add();
             granema = "100: IDENTIFICADOR";
+
+            for (int i = 0; i < palabrasReservadas.Length; i++) {
+                if (string.Equals(lexema.Substring(0, lexema.Length - 1), palabrasReservadas[i], StringComparison.OrdinalIgnoreCase)) {
+                    granema = "100: PALABRA RESERVADA"; 
+                }
+            }
+           
             dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length-1);
             dataGridView1.Rows[fila].Cells[3].Value = granema;
         }
