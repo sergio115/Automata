@@ -30,20 +30,12 @@ namespace Automata
             InitializeComponent();
         }
 
-        private void TextBox1_TextChanged(object sender, EventArgs e)
+        private void BtnAnalizar_Click(object sender, EventArgs e)
         {
             charsRead = textBox1.Text.ToCharArray();
             dataGridView1.Rows.Clear();
 
             EstadoInicial();
-        }
-
-        private void BtnAnalizar_Click(object sender, EventArgs e)
-        {
-            //charsRead = textBox1.Text.ToCharArray();
-            //dataGridView1.Rows.Clear();
-
-            //EstadoInicial();
         }
 
         public void EstadoInicial() {
@@ -168,7 +160,6 @@ namespace Automata
                     goto Estado0;
                 } else if (charsRead[contador] == ' ') {
                     contador++;
-                    //EstadosAceptacion(127);
                     lexema = null;
                     goto Estado0;
                 } else  {
@@ -444,34 +435,32 @@ namespace Automata
 
         public int EstadosAceptacion(int estado) {
             fila = dataGridView1.Rows.Add();
-            dataGridView1.Rows[fila].Cells[2].Value = lexema;
+            dataGridView1.Rows[fila].Cells[0].Value = lexema;
 
             switch (estado) {
                 case 100:
                     granema = "100: IDENTIFICADOR";
 
-                    for (int i = 0; i < palabrasReservadas.Length; i++)
-                    {
+                    for (int i = 0; i < palabrasReservadas.Length; i++) {
                         if (string.Equals(lexema.Substring(0, lexema.Length - 1),
-                                            palabrasReservadas[i], StringComparison.OrdinalIgnoreCase))
-                        {
+                                            palabrasReservadas[i], StringComparison.OrdinalIgnoreCase)) {
                             granema = "100: PALABRA RESERVADA";
                         }
                     }
 
-                    dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length - 1);
+                    dataGridView1.Rows[fila].Cells[0].Value = lexema.Substring(0, lexema.Length - 1);
                     break;
                 case 101:
                     granema = "101: NÚMERO ENTERO";
-                    dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length - 1);
+                    dataGridView1.Rows[fila].Cells[0].Value = lexema.Substring(0, lexema.Length - 1);
                     break;
                 case 102:
                     granema = "102: NÚMERO REAL";
-                    dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length - 1);
+                    dataGridView1.Rows[fila].Cells[0].Value = lexema.Substring(0, lexema.Length - 1);
                     break;
                 case 103:
                     granema = "103: LETRERO";
-                    dataGridView1.Rows[fila].Cells[2].Value = lexema.Substring(0, lexema.Length - 1);
+                    dataGridView1.Rows[fila].Cells[0].Value = lexema.Substring(0, lexema.Length - 1);
                     break;
                 case 104:
                     granema = "104: COMENTARIO";
@@ -542,14 +531,9 @@ namespace Automata
                 case 126:
                     granema = "126: ASIGNACIÓN";
                     break;
-                case 127:
-                    lexema = "' '";
-                    granema = "127: ESPACIO";
-                    dataGridView1.Rows[fila].Cells[2].Value = lexema;
-                    break;
             }
 
-            dataGridView1.Rows[fila].Cells[3].Value = granema;
+            dataGridView1.Rows[fila].Cells[1].Value = granema;
 
             return 0;
         }
@@ -575,8 +559,8 @@ namespace Automata
                     break;
             }
 
-            dataGridView1.Rows[fila].Cells[2].Value = lexema;
-            dataGridView1.Rows[fila].Cells[3].Value = granema;
+            dataGridView1.Rows[fila].Cells[0].Value = lexema;
+            dataGridView1.Rows[fila].Cells[1].Value = granema;
 
             return 0;
         }

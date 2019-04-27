@@ -48,7 +48,6 @@
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(545, 426);
             this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // dataGridView1
             // 
@@ -56,8 +55,6 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Fila,
-            this.Columna,
             this.Lexema,
             this.Granema});
             this.dataGridView1.Location = new System.Drawing.Point(563, 50);
@@ -66,41 +63,23 @@
             this.dataGridView1.Size = new System.Drawing.Size(444, 388);
             this.dataGridView1.TabIndex = 3;
             // 
-            // Fila
-            // 
-            this.Fila.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Fila.HeaderText = "Fila";
-            this.Fila.MinimumWidth = 50;
-            this.Fila.Name = "Fila";
-            this.Fila.ReadOnly = true;
-            this.Fila.Visible = false;
-            // 
-            // Columna
-            // 
-            this.Columna.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Columna.HeaderText = "Columna";
-            this.Columna.MinimumWidth = 50;
-            this.Columna.Name = "Columna";
-            this.Columna.ReadOnly = true;
-            this.Columna.Visible = false;
-            // 
             // Lexema
             // 
             this.Lexema.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Lexema.HeaderText = "Lexema";
-            this.Lexema.MinimumWidth = 150;
+            this.Lexema.MinimumWidth = 200;
             this.Lexema.Name = "Lexema";
             this.Lexema.ReadOnly = true;
-            this.Lexema.Width = 150;
+            this.Lexema.Width = 200;
             // 
             // Granema
             // 
             this.Granema.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Granema.HeaderText = "Granema";
-            this.Granema.MinimumWidth = 150;
+            this.Granema.MinimumWidth = 200;
             this.Granema.Name = "Granema";
             this.Granema.ReadOnly = true;
-            this.Granema.Width = 150;
+            this.Granema.Width = 200;
             // 
             // btnAnalizar
             // 
