@@ -34,11 +34,13 @@
             this.Columna = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lexema = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Granema = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAnalizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
+            this.textBox1.AcceptsTab = true;
             this.textBox1.Location = new System.Drawing.Point(12, 12);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -57,10 +59,10 @@
             this.Columna,
             this.Lexema,
             this.Granema});
-            this.dataGridView1.Location = new System.Drawing.Point(563, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(563, 50);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(444, 426);
+            this.dataGridView1.Size = new System.Drawing.Size(444, 388);
             this.dataGridView1.TabIndex = 3;
             // 
             // Fila
@@ -70,7 +72,6 @@
             this.Fila.MinimumWidth = 50;
             this.Fila.Name = "Fila";
             this.Fila.ReadOnly = true;
-            this.Fila.Width = 50;
             this.Fila.Visible = false;
             // 
             // Columna
@@ -80,7 +81,6 @@
             this.Columna.MinimumWidth = 50;
             this.Columna.Name = "Columna";
             this.Columna.ReadOnly = true;
-            this.Columna.Width = 73;
             this.Columna.Visible = false;
             // 
             // Lexema
@@ -101,11 +101,23 @@
             this.Granema.ReadOnly = true;
             this.Granema.Width = 150;
             // 
+            // btnAnalizar
+            // 
+            this.btnAnalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnalizar.Location = new System.Drawing.Point(732, 12);
+            this.btnAnalizar.Name = "btnAnalizar";
+            this.btnAnalizar.Size = new System.Drawing.Size(106, 32);
+            this.btnAnalizar.TabIndex = 4;
+            this.btnAnalizar.Text = "ANALIZAR";
+            this.btnAnalizar.UseVisualStyleBackColor = true;
+            this.btnAnalizar.Click += new System.EventHandler(this.BtnAnalizar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 450);
+            this.Controls.Add(this.btnAnalizar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -126,6 +138,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Columna;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lexema;
         private System.Windows.Forms.DataGridViewTextBoxColumn Granema;
+        private System.Windows.Forms.Button btnAnalizar;
     }
 }
 

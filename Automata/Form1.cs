@@ -34,6 +34,14 @@ namespace Automata
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
         {
+            //charsRead = textBox1.Text.ToCharArray();
+            //dataGridView1.Rows.Clear();
+
+            //EstadoInicial();
+        }
+
+        private void BtnAnalizar_Click(object sender, EventArgs e)
+        {
             charsRead = textBox1.Text.ToCharArray();
             dataGridView1.Rows.Clear();
 
@@ -165,10 +173,16 @@ namespace Automata
                     Estado17();
                     lexema = null;
                     goto Estado0;
-                }
-
-                // Espacio para agregar la deteccion de tabular, new line y backspace
-                else if (charsRead[contador] == ' ') {
+                } else if (charsRead[contador] == '\t') {
+                    contador++;
+                    goto Estado0;
+                } else if (charsRead[contador] == '\n') {
+                    contador++;
+                    goto Estado0;
+                } else if (charsRead[contador] == '\r') {
+                    contador++;
+                    goto Estado0;
+                } else if (charsRead[contador] == ' ') {
                     contador++;
                     Estado127();
                     lexema = null;
@@ -689,6 +703,6 @@ namespace Automata
             dataGridView1.Rows[fila].Cells[2].Value = lexema;
             dataGridView1.Rows[fila].Cells[3].Value = granema;
         }
-        #endregion
+        #endregion    
     }
 }
