@@ -43,14 +43,24 @@ namespace Automata
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 string cadenaCelda = row.Cells[0].Value.ToString();
-                string celdaOrdenada = new String(cadenaCelda.OrderBy(x => x).ToArray());
+                string celdaOrdenada = " ";
+                if (row.Cells[3].Value.Equals("100"))
+                {
+                    celdaOrdenada = new String(cadenaCelda.OrderBy(x => x).ToArray());
+                }
+                else if (row.Cells[3].Value.Equals("101"))
+                {
+                    celdaOrdenada = new String(cadenaCelda.OrderByDescending(x => x).ToArray());
+                }
 
+                // Se guardael contenido ordenado en el mismo grid pero en una columna oculta
                 row.Cells[2].Value = celdaOrdenada;
 
             }
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
+                // Recorre toda la columna oculta del resultado ordenado y lo pasa a un textBox
                 txBxSintactico.Text += row.Cells[2].Value.ToString();
             }
         }
@@ -461,7 +471,7 @@ namespace Automata
                     for (int i = 0; i < palabrasReservadas.Length; i++) {
                         if (string.Equals(lexema.Substring(0, lexema.Length - 1),
                                             palabrasReservadas[i], StringComparison.OrdinalIgnoreCase)) {
-                            granema = "100: PALABRA RESERVADA";
+                            granema = "127: PALABRA RESERVADA";
                         }
                     }
 
@@ -551,6 +561,9 @@ namespace Automata
             }
 
             dataGridView1.Rows[fila].Cells[1].Value = granema;
+            
+            //  Recupera el codigo
+            dataGridView1.Rows[fila].Cells[3].Value = granema.Substring(0, 3);
 
             return 0;
         }
@@ -578,6 +591,10 @@ namespace Automata
 
             dataGridView1.Rows[fila].Cells[0].Value = lexema;
             dataGridView1.Rows[fila].Cells[1].Value = granema;
+            
+            //  Recupera el codigo
+            dataGridView1.Rows[fila].Cells[3].Value = granema.Substring(6, 3);
+
 
             return 0;
         }

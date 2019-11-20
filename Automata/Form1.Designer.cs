@@ -37,6 +37,8 @@
             this.btnAnalizar = new System.Windows.Forms.Button();
             this.txBxSintactico = new System.Windows.Forms.TextBox();
             this.LexemaOrdenado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoGranema = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +61,8 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Lexema,
             this.Granema,
-            this.LexemaOrdenado});
+            this.LexemaOrdenado,
+            this.CodigoGranema});
             this.dataGridView1.Location = new System.Drawing.Point(563, 50);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -121,11 +124,29 @@
             this.LexemaOrdenado.ReadOnly = true;
             this.LexemaOrdenado.Visible = false;
             // 
+            // CodigoGranema
+            // 
+            this.CodigoGranema.HeaderText = "CodigoGranema";
+            this.CodigoGranema.Name = "CodigoGranema";
+            this.CodigoGranema.ReadOnly = true;
+            this.CodigoGranema.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 221);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(179, 24);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Resultado Sintáctico";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txBxSintactico);
             this.Controls.Add(this.btnAnalizar);
             this.Controls.Add(this.dataGridView1);
@@ -133,7 +154,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Analizador Léxico y Sintáctico";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -151,6 +172,8 @@
         private System.Windows.Forms.Button btnAnalizar;
         private System.Windows.Forms.TextBox txBxSintactico;
         private System.Windows.Forms.DataGridViewTextBoxColumn LexemaOrdenado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoGranema;
+        private System.Windows.Forms.Label label1;
     }
 }
 
