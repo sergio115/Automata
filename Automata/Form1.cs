@@ -46,7 +46,8 @@ namespace Automata
                 string celdaOrdenada = " ";
                 if (row.Cells[3].Value.Equals("100"))
                 {
-                    celdaOrdenada = new String(cadenaCelda.OrderBy(x => x).ToArray());
+                    celdaOrdenada = new String(cadenaCelda.Where(x => char.IsLower(x)).OrderBy(x => x)
+                        .Concat(cadenaCelda.Where(x => char.IsUpper(x)).OrderBy(x => x)).ToArray());
                 }
                 else if (row.Cells[3].Value.Equals("101"))
                 {
