@@ -34,8 +34,25 @@ namespace Automata
         {
             charsRead = textBox1.Text.ToCharArray();
             dataGridView1.Rows.Clear();
+            txBxSintactico.Clear();
 
+            // Aquí inicia el análisis léxico
             EstadoInicial();
+
+            // Aquí inicia el análisis sintáctico
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                string cadenaCelda = row.Cells[0].Value.ToString();
+                string celdaOrdenada = new String(cadenaCelda.OrderBy(x => x).ToArray());
+
+                row.Cells[2].Value = celdaOrdenada;
+
+            }
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                txBxSintactico.Text += row.Cells[2].Value.ToString();
+            }
         }
 
         public void EstadoInicial() {
